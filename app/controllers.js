@@ -5,6 +5,16 @@ StudentManagerControllers.controller('StudentListController',function($scope,$st
 
     slimAPI.list(function(result){
         $scope.students = result;
+
+        angular.forEach($scope.students,function(value,index){
+            var all_test_scores_array = [];
+
+            all_test_scores_array.push($scope.students[index].fall_test_score);
+            all_test_scores_array.push($scope.students[index].spring_test_score);
+            all_test_scores_array.push($scope.students[index].final_test_score);
+
+            $scope.students[index].all_test_scores = all_test_scores_array;
+        });
     });
 
     $scope.deleteStudent = function(student){
@@ -13,6 +23,18 @@ StudentManagerControllers.controller('StudentListController',function($scope,$st
                 $window.location.href='';
             });
         }
+    };
+
+    $scope.calculateAverage = function(data){
+        console.log(data.length);
+        var sum = 0;
+        for(i = 0; i < data.length; i++) {
+            sum += parseInt(data[i], 10);
+        }
+
+        var average = sum/data.length;
+
+        return average;
     };
 });
 

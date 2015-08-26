@@ -50,7 +50,7 @@ StudentManagerServices.factory('slimAPI', function($http){
 });
 
 StudentManagerServices.service('popupService',function($window){
-    this.showPopup=function(message){
+    this.showPopup = function(message){
         return $window.confirm(message);
     };
 });

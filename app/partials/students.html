@@ -34,6 +34,7 @@
                     <th>Fall Test Score</th>
                     <th>Spring Test Score</th>
                     <th>Final Test Score</th>
+                    <th>Average Test Score</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -44,6 +45,7 @@
                     <td>{{student.fall_test_score}}</td>
                     <td>{{student.spring_test_score}}</td>
                     <td>{{student.final_test_score}}</td>
+                    <td>{{calculateAverage(student.all_test_scores) | number:2}}</td>
                     <td>
                         <ul class="button-group">
                             <li><a class="small button" ui-sref="viewStudent({id:student.id})">View</a></li>
