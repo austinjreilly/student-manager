@@ -538,9 +538,11 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 1. Run `gulp sass` to compile CSS
 2. Uncomment CSS include in `index.html`
 
+## Angular extras
 
-7. Add sorting and filtering to All students view
-8. Add Unit Test
+0. Add sorting to student listing page
+1. Add search filter to student listing page
+
 
 
 
