@@ -1,0 +1,22 @@
+.all-students a.button{
+    margin-bottom: 0;
+}
+
+@mixin arrow {
+  border-color: black transparent;
+  border-style: solid;
+  height: 0;
+  width: 0;
+  display: inline-block;
+  margin-bottom: 0.7em;
+}
+
+.arrow-down {
+    @include arrow;
+    border-width: 5px 5px 0px 5px;
+}
+
+.arrow-up {
+    @include arrow;
+    border-width: 0px 5px 5px 5px;
+}

@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var rename =  require('gulp-rename');
+var rename = require('gulp-rename');
 var watch = require('gulp-watch');
 
 // Configuration
@@ -21,7 +21,7 @@ gulp.task('sass', function () {
     .src(sassSource)
     .pipe(sass(sassOptions).on('error', sass.logError))
     .pipe(rename('style.css'))
-    .pipe(gulp.dest(sassDestination))
+    .pipe(gulp.dest(sassDestination));
 });
 
 // Watch

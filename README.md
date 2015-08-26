@@ -94,7 +94,7 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 
         var gulp = require('gulp');
         var sass = require('gulp-sass');
-        var rename =  require('gulp-rename');
+        var rename = require('gulp-rename');
         var watch = require('gulp-watch');
 
         // Configuration
@@ -228,7 +228,8 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 
 11. Install packages:
 
-        composer install && npm install
+        `composer install`
+        `npm install`
 
 ## Git Setup
 
@@ -528,7 +529,16 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 3. Create partial in `app/partials/students.html`
 4. Create view in `index.php` by adding `<div ui-view></div>` element/directive.=
 5. Repeat for viewing single student, editing exiting student, deleting existing students, and adding a new student
-6. Add frontend styles using Foundation and Sass
+
+## CSS
+
+0. Create scss directory and files
+        `mkdir app/assets/scss app/assets/css`
+        `touch app/assets/scss/custom.scss app/assets/scss/main.scss`
+1. Run `gulp sass` to compile CSS
+2. Uncomment CSS include in `index.html`
+
+
 7. Add sorting and filtering to All students view
 8. Add Unit Test
 
