@@ -2,6 +2,11 @@
 
 Student Manager Application built using the Slim PHP Microframework, MySQL, and AngularJS.
 
+## Debugging shortcuts
+
+* MySQL: `/Applications/MAMP/Library/bin/mysql -u root -p`, Password: `root`
+* PHP: `tail -f /Applications/MAMP/logs/php_error.log`
+
 ## Initial Setup
 
 1. Directory Structure:
@@ -56,7 +61,7 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 6. Set up `bower.json`
 
         {
-          "name": "student-manager-demo",
+          "name": "student-manager-example",
           "version": "0.0.0",
           "dependencies": {
             "angular": "~1.4.4",
@@ -193,14 +198,14 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 10. Set up `package.json`
 
         {
-          "name": "student-manager-demo",
+          "name": "student-manager-example",
           "version": "0.0.1",
           "description": "A student management tool.",
           "author": "Austin Reilly <austinjreilly@gmail.com>",
           "readme": "README.md",
           "repository": {
             "type": "git",
-            "url": "https://github.com/austinjreilly/student-manager-demo"
+            "url": "https://github.com/austinjreilly/student-manager-example"
           },
           "private": true,
           "devDependencies": {
@@ -269,7 +274,7 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 
 0. `/Applications/MAMP/Library/bin/mysql -u root -p`
 1. Type the password `root`
-2. `CREATE DATABASE student_manager_demo;`
+2. `CREATE DATABASE student_manager_example;`
 3. `USE student_manager_demo;`
 4. Create the table:
 
@@ -289,3 +294,153 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
             ('Paul','McCartney','115','141','129'),
             ('George','Harrison','141','153','149'),
             ('Ringo','Starr','100','88','93');
+
+### Setting up routes
+
+0. Add Database Configuration to index.php
+
+        $dbhost = 'localhost';
+        $dbuser = 'root';
+        $dbpass = 'root';
+        $dbname = 'student_manager_example';
+        $dbmethod = 'mysql:dbname=';
+        $dsn = $dbmethod.$dbname;
+        $pdo = new PDO($dsn, $dbuser, $dbpass);
+        $db = new NotORM($pdo);
+
+1. Show all students
+
+        $app->get('/students', function() use($app, $db){
+            $students = array();
+            foreach ($db->students() as $student) {
+                $students[]  = array(
+                    'id' => $student['id'],
+                    'first_name' => $student['first_name'],
+                    'last_name' => $student['last_name'],
+                    'fall_test_score' => $student['fall_test_score'],
+                    'spring_test_score' => $student['spring_test_score'],
+                    'final_test_score' => $student['final_test_score']
+                );
+            }
+            $app->response()->header("Content-Type", "application/json");
+            echo json_encode(
+                $students
+            );
+        });
+
+
+    * Test: `curl -X GET http://localhost/student-manager-example/api/students`
+
+2. Add a new student
+
+        $app->post('/students', function() use($app, $db){
+            $app->response()->header("Content-Type", "application/json");
+
+            $json = $app->request->getBody();
+            $data = json_decode($json, true);
+            error_log(print_r($data,true));
+            $result = $db->students->insert($data);
+
+            if ($result != false){
+                echo json_encode(array(
+                    'status' => true,
+                    'result' => $result
+                ));
+            } else {
+                echo json_encode(array(
+                    'status' => false
+                ));
+            }
+        });
+
+
+    * Test: `curl -X POST -H "application/json" -d '{"first_name":"Stuart","last_name":"Sutcliffe","fall_test_score":"100","spring_test_score":"109","final_test_score":"0"}' http://localhost/student-manager-example/api/students`
+
+3. Show an single student
+
+        $app->get('/students/:id', function($id) use ($app, $db) {
+            $app->response()->header("Content-Type", "application/json");
+            $student = $db->students()->where('id', $id);
+            if($data = $student->fetch()){
+                echo json_encode(array(
+                    'status' => true,
+                    'id' => $data['id'],
+                    'first_name' => $data['first_name'],
+                    'last_name' => $data['last_name'],
+                    'fall_test_score' => $student['fall_test_score'],
+                    'spring_test_score' => $student['spring_test_score'],
+                    'final_test_score' => $student['final_test_score']
+                ));
+            }
+            else {
+                echo json_encode(array(
+                    'status' => false,
+                    'message' => "Student with ID $id does not exist."
+                ));
+            }
+        });
+
+    * Test: `curl -X GET http://localhost/student-manager-example/api/students/1`
+
+4. Update a student
+
+        $app->put('/students/:id', function($id) use($app, $db){
+            $app->response()->header("Content-Type", "application/json");
+            $student = $db->students()->where("id", $id);
+            if ($student->fetch()) {
+                $json = $app->request->getBody();
+                $data = json_decode($json, true);
+                error_log(print_r($json,true));
+                $result = $student->update($data);
+                echo json_encode(array(
+                    'status' => true,
+                    'message' => "Student updated successfully."
+                ));
+            }
+            else {
+                echo json_encode(array(
+                    'status' => false
+                ));
+            }
+        });
+
+    * Test: curl -X PUT -d '{"first_name":"John W."}' -H "Content-Type: application/json;" http://localhost/student-manager-example/api/students/1
+
+5. Delete a student
+
+        $app->delete('/students/:id', function($id) use($app, $db){
+            $app->response()->header("Content-Type", "application/json");
+            $student = $db->students()->where('id', $id);
+            if($student->fetch()){
+                $result = $student->delete();
+                echo json_encode(array(
+                    'status' => true,
+                    'message' => "Student deleted successfully."
+                ));
+            }
+            else{
+                echo json_encode(array(
+                    'status' => false,
+                    'message' => "Student with ID $id does not exist."
+                ));
+            }
+        });
+
+
+        * Test: curl -i -X DELETE http://localhost/student-manager-example/api/students/5
+
+6. Run the application!
+
+    $app->run();
+
+#### REST API Summary
+
+## REST API Summary
+
+| URL                                              | HTTP Verb | POST Body   | Result                       |
+|--------------------------------------------------|-----------|-------------|------------------------------|
+| http://localhost/student-manager-example/api/students    | GET       | empty       | Returns all students         |
+| http://localhost/student-manager-example/api/students    | POST      | JSON String | Creates new student          |
+| http://localhost/student-manager-example/api/students/:id | GET      | empty       | Returns single student       |
+| http://localhost/student-manager-example/api/students/:id | PUT      | JSON String | Updates and existing student |
+| http://localhost/student-manager-example/api/students/:id | DELETE   | empty       | Deletes existing student
