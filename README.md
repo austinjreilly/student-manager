@@ -234,3 +234,72 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 4. `git push -u origin master`
 5. `git tag -a step1 -m Setup`
 6. `git push origin step1`
+
+
+## API Setup
+
+0. New branch: `git checkout -b api`
+1. `cd api`
+2. `touch .htaccess index.php`
+
+### API Hello World
+
+0. Add to `api/.htaccess`:
+
+        RewriteEngine On
+
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^(.*)$ index.php [QSA,L]
+        ```
+1. Add to `api/index.php `
+
+        <?php
+
+        require 'vendor/autoload.php';
+        $app = new \Slim\Slim();
+
+        $app->get('/hello/:name', function ($name) {
+            echo "Hello, $name";
+        });
+
+        $app->run();
+2. Go to <http://localhost/student-manager-example/api/hello/austin>
+
+### Database setup
+
+0. `/Applications/MAMP/Library/bin/mysql -u root -p`
+1. Type the password `root`
+2. `CREATE DATABASE student_manager;`
+3. `USE student_manager;`
+4. Create the table:
+
+        CREATE TABLE students (
+            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            first_name VARCHAR(30) NOT NULL,
+            last_name VARCHAR(30) NOT NULL,
+            fall_test_score INT(3) NOT NULL
+            spring_test_score INT(3) NOT NULL
+            final_test_score INT(3) NOT NULL
+        );
+
+5. Seed the database:
+
+        INSERT INTO students(first_name,last_name,fall_test_score,spring_test_score,final_test_score) VALUES
+            ('John','Lennon','120','131','140'),
+            ('Paul','McCartney','115','141','129'),
+            ('George','Harrison','141','153',''149),
+            ('Ringo','Starr','100','88','93');
+
+6. Add Database Configuration to `index.php`
+
+    $dbhost = 'localhost';
+    $dbuser = 'root';
+    $dbpass = 'root';
+    $dbname = 'student_manager';
+    $dbmethod = 'mysql:dbname=';
+    $dsn = $dbmethod.$dbname;
+    $pdo = new PDO($dsn, $dbuser, $dbpass);
+    $db = new NotORM($pdo);
+
+7.
+
