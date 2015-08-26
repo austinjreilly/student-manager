@@ -200,7 +200,7 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
           "readme": "README.md",
           "repository": {
             "type": "git",
-            "url": "https://github.com/austinjreilly/student-manager"
+            "url": "https://github.com/austinjreilly/student-manager-demo"
           },
           "private": true,
           "devDependencies": {
@@ -225,3 +225,8 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 
         composer install && npm install
 
+## Git setup
+
+0. Create new repository on Github
+1. `git init`
+2.
