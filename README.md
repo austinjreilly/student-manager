@@ -443,3 +443,28 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 | http://localhost/student-manager-example/api/students/:id | PUT       | JSON String | Updates and existing student |
 | http://localhost/student-manager-example/api/students/:id | DELETE    | empty       | Deletes existing student     |
 
+## Angular Set Up
+
+### Angular Hello World
+
+0. `touch index.html`
+1. Add to index.html
+        <!doctype html>
+        <html lang="en" ng-app>
+            <head>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Student Manager</title>
+
+                <script src="app/assets/lib/angular/angular.js"></script>
+            </head>
+            <body>
+                <div class="row">
+                    <h1>Student Manager</h1>
+                    <div ng-init="hello='world'">
+                       <h1>{{hello}}</h1>
+                       <input type="text" ng-model="hello">
+                   </div>
+                </div>
+            </body>
+        </html>
