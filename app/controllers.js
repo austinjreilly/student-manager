@@ -1,2 +1,7 @@
 var StudentManagerControllers = angular.module('StudentManagerControllers',[]);
-var StudentManagerServices = angular.module('StudentManagerServices',[]);
+
+StudentManagerControllers.controller('StudentListController',function($scope,slimAPI){
+    slimAPI.list(function(result){
+        $scope.students = result;
+    });
+});

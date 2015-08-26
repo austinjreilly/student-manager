@@ -505,6 +505,34 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
         var StudentManagerControllers = angular.module('StudentManagerControllers',[]);
         var StudentManagerServices = angular.module('StudentManagerServices',[]);
 
+### View List of all students with Angular
+
+0. Create factory using `$http` service in `app/services.js`
+        StudentManagerServices.factory('slimAPI', function($http){
+            return {
+                    list: function(callback){
+                        $http({
+                            method: 'GET',
+                            url: 'http://localhost/student-manager-example/api/students',
+                        }).success(callback);
+                    },
+                };
+        });
+1. Create controller in `app/controllers.js`
+        StudentManagerControllers.controller('StudentListController',function($scope,slimAPI){
+            slimAPI.list(function(result){
+                $scope.students = result;
+            });
+        });
+2. Create state in `app/app.js`
+3. Create partial in `app/partials/students.html`
+4. Create view in `index.php` by adding `<div ui-view></div>` element/directive.=
+5. Repeat for viewing single student, editing exiting student, deleting existing students, and adding a new student
+6. Add frontend styles using Foundation and Sass
+7. Add sorting and filtering to All students view
+8. Add Unit Test
+
+
 
 
 

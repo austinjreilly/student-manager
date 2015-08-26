@@ -1,5 +1,17 @@
-angular.module('StudentManager', [])
+var StudentManagerApp = angular.module('StudentManagerApp',[
+        'ui.router',
+        'ngResource',
+        'StudentManagerControllers',
+        'StudentManagerServices'
+    ]
+);
 
-.controller('MainCtrl', function($scope){
-  $scope.hello = 'world';
+StudentManagerApp.config(function($stateProvider,$httpProvider){
+    $stateProvider.state('students',{
+        url:'/students',
+        templateUrl:'app/partials/students.html',
+        controller:'StudentListController'
+    })
+}).run(function($state){
+   $state.go('students');
 });

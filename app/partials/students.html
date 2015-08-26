@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="columns large-6">
+        <h2 class="subheader">All Students</h2>
+    </div>
+    <div class="columns large-6">
+        <a class="button success" ui-sref="newStudent">Add New Student</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="columns large-12">
+        <table class="all-students">
+            <thead>
+                <tr>
+                    <th>
+                        <a href="#" ng-click="sortType = 'first_name'; sortReverse = !sortReverse">First Name</a>
+                        <div class="arrow-down" ng-show="sortType == 'first_name' && !sortReverse"></div>
+                        <div class="arrow-up"  ng-show="sortType == 'first_name' && sortReverse"></div>
+                    </th>
+                    <th>
+                        <a href="#" ng-click="sortType = 'last_name'; sortReverse = !sortReverse">Last Name</a>
+                        <div class="arrow-down" ng-show="sortType == 'last_name' && !sortReverse"></div>
+                        <div class="arrow-up"  ng-show="sortType == 'last_name' && sortReverse"></div>
+                    </th>
+                    <th>Fall Test Score</th>
+                    <th>Spring Test Score</th>
+                    <th>Final Test Score</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="student in students | orderBy:sortType:sortReverse | filter:searchStudents">
+                    <td>{{student.first_name}}</td>
+                    <td>{{student.last_name}}</td>
+                    <td>{{student.fall_test_score}}</td>
+                    <td>{{student.spring_test_score}}</td>
+                    <td>{{student.final_test_score}}</td>
+                    <td>
+                        <ul class="button-group">
+                            <li><a class="small button" ui-sref="viewStudent({id:student.id})">View</a></li>
+                            <li><a class="small button alert" ng-click="deleteStudent(student)">Delete</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
