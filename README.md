@@ -538,13 +538,17 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 1. Run `gulp sass` to compile CSS
 2. Uncomment CSS include in `index.html`
 
-## Angular extras
+## Angular Extras
 
 0. Add sorting to student listing page
 1. Add search filter to student listing page
 
+## Unit Test
 
-
+0. Install karma, go through `karma.conf.js` creation process
+1. `touch test/studentlist.controller.test.js`
+2. Create test
+3. Run test using `npm test`
 
 
 
