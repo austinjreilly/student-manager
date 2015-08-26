@@ -545,7 +545,7 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 
 ## Unit Test
 
-0. Install karma, go through `karma.conf.js` creation process
+0. Install karma, go through `karma.conf.js` creation process optionally by running `karma init`
 1. `touch test/studentlist.controller.test.js`
 2. Create test
 3. Run test using `npm test`
