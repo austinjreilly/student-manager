@@ -468,3 +468,16 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
                 </div>
             </body>
         </html>
+
+### Angular Hello World with Controller
+
+0. `touch app/app.js`
+1. Include `app/app.js` in `index.html`
+2. Add `ng-app="StudentManager"` directive to `<html>` tag
+3. Add to `app/app.js`
+
+    angular.module('StudentManager', ['ngResource','ngRoute'])
+
+    .controller('MainCtrl', function($scope){
+      $scope.hello = 'world';
+    });
