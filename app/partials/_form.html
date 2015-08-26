@@ -1,0 +1,54 @@
+<form>
+    <div class="row">
+        <div class="small-8 columns">
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="first_name" class="right inline">First Name</label>
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="first_name" placeholder="First Name" ng-model="student.first_name" >
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="last_name" class="right inline">Last Name</label>
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="last_name" placeholder="First Name" ng-model="student.last_name" >
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="fall_test_score" class="right inline">Fall Test Score</label>
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="fall_test_score" placeholder="Fall Test Score" ng-model="student.fall_test_score" >
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="spring_test_score" class="right inline">Spring Test Score</label>
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="spring_test_score" placeholder="Spring Test Score" ng-model="student.spring_test_score" >
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="final_test_score" class="right inline">Final Test Score</label>
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="final_test_score" placeholder="Final Test Score" ng-model="student.final_test_score" >
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns large-3">
+            <ul class="button-group">
+                <li><input type="submit" class="button success" value="Save"></li>
+                <li><a ui-sref="students" class="button secondary">Cancel</a></li>
+            </ul>
+        </div>
+    </div>
+</form>

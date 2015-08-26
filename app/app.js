@@ -11,7 +11,19 @@ StudentManagerApp.config(function($stateProvider,$httpProvider){
         url:'/students',
         templateUrl:'app/partials/students.html',
         controller:'StudentListController'
-    })
+    }).state('viewStudent',{
+       url:'/students/:id/view',
+       templateUrl:'app/partials/student-view.html',
+       controller:'StudentViewController'
+    }).state('newStudent',{
+        url:'/students/new',
+        templateUrl:'app/partials/student-add.html',
+        controller:'studentCreateController'
+    }).state('editStudent',{
+        url:'/students/:id/edit',
+        templateUrl:'app/partials/student-edit.html',
+        controller:'StudentEditController'
+    });
 }).run(function($state){
    $state.go('students');
 });

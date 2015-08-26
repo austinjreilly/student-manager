@@ -364,9 +364,9 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
                     'id' => $data['id'],
                     'first_name' => $data['first_name'],
                     'last_name' => $data['last_name'],
-                    'fall_test_score' => $student['fall_test_score'],
-                    'spring_test_score' => $student['spring_test_score'],
-                    'final_test_score' => $student['final_test_score']
+                    'fall_test_score' => $data['fall_test_score'],
+                    'spring_test_score' => $data['spring_test_score'],
+                    'final_test_score' => $data['final_test_score']
                 ));
             }
             else {
