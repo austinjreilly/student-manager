@@ -1,0 +1,28 @@
+{
+  "name": "student-manager-example",
+  "version": "0.0.1",
+  "description": "A student management tool.",
+  "author": "Austin Reilly <austinjreilly@gmail.com>",
+  "readme": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/austinjreilly/student-manager"
+  },
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-watch": "^4.3.5",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.9",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "phantomjs": "^1.9.18"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "test": "karma start karma.conf.js"
+  }
+}
