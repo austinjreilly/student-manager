@@ -265,5 +265,27 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
         $app->run();
 2. Go to <http://localhost/student-manager-example/api/hello/austin>
 
-7.
+### Database setup
 
+0. `/Applications/MAMP/Library/bin/mysql -u root -p`
+1. Type the password `root`
+2. `CREATE DATABASE student_manager_demo;`
+3. `USE student_manager_demo;`
+4. Create the table:
+
+        CREATE TABLE students (
+            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            first_name VARCHAR(30) NOT NULL,
+            last_name VARCHAR(30) NOT NULL,
+            fall_test_score INT(3) NOT NULL,
+            spring_test_score INT(3) NOT NULL,
+            final_test_score INT(3) NOT NULL
+        );
+
+5. Seed the database:
+
+        INSERT INTO students(first_name,last_name,fall_test_score,spring_test_score,final_test_score) VALUES
+            ('John','Lennon','120','131','140'),
+            ('Paul','McCartney','115','141','129'),
+            ('George','Harrison','141','153','149'),
+            ('Ringo','Starr','100','88','93');
