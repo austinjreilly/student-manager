@@ -232,14 +232,11 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 
 ## Git Setup
 
-0. Create new repository on Github
+0. Create new repository on GitHub
 1. `git init`
 2. `git add *`
 3. `git commit -m ""Setting up configuration files`
 4. `git push -u origin master`
-5. `git tag -a step1 -m Setup`
-6. `git push origin step1`
-
 
 ## API Setup
 
@@ -481,3 +478,33 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
     .controller('MainCtrl', function($scope){
       $scope.hello = 'world';
     });
+
+### Angular Setup
+
+0. Create application files: `touch app/controllers.js app/services.js`
+1. Create partial files: `touch app/partials/_form.html app/partials/student-add.html app/partials/student-edit.html app/partials/student-view.html app/partials/students.html`
+2. Include necessary files in `<head>` of `index.html`
+
+        <script src="app/assets/lib/angular/angular.js"></script>
+        <script src="app/assets/lib/angular-resource/angular-resource.js"></script>
+        <script src="app/assets/lib/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/controllers.js"></script>
+        <script src="app/services.js"></script>
+3. Set up dependencies in `app/app.js`
+
+    var StudentManagerApp = angular.module('StudentManagerApp',[
+            'ui.router',
+            'ngResource',
+            'StudentManagerControllers',
+            'StudentManagerServices'
+        ]
+    );
+4. Create empty `StudentManagerServices` and `StudentManagerServices` modules, in `app/controllers.js` and `app/services.js`, respectively
+
+        var StudentManagerControllers = angular.module('StudentManagerControllers',[]);
+        var StudentManagerServices = angular.module('StudentManagerServices',[]);
+
+
+
+
