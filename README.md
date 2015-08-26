@@ -28,16 +28,16 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
         package.json
         README.md
 
-2. Setup directories
+2. Set up directories
 
         mkdir -p api app app/partials test
 
 
-3. Setup empty config files
+3. Set up empty config files
 
         touch .bowerrc .gitignore bower.json composer.json gulpfile.js karma.conf.js package.json
 
-4. Setup `.bowerrc`
+4. Set up `.bowerrc`
 
         {
           "directory": "app/assets/lib/",
@@ -45,7 +45,7 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
         }
 
 
-5. Setup `.gitignore`
+5. Set up `.gitignore`
 
         .DS_Store
         node_modules
@@ -53,7 +53,7 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
         composer.lock
         api/vendor
 
-6. Setup `bower.json`
+6. Set up `bower.json`
 
         {
           "name": "student-manager-demo",
@@ -71,7 +71,7 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
           }
         }
 
-7. Setup `composer.json`
+7. Set up `composer.json`
 
         {
             "config": {
@@ -83,7 +83,7 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
             }
         }
 
-8. Setup `gulpfile.js`
+8. Set up `gulpfile.js`
 
         // Dependencies
 
@@ -116,7 +116,7 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
             gulp.watch(sassSource,['sass']);
         });
 
-9. Setup `karma.conf.json`
+9. Set up `karma.conf.json`
 
         // Karma configuration
         // Generated on Mon Aug 24 2015 15:35:10 GMT-0500 (CDT)
@@ -190,7 +190,7 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
           })
         }
 
-10. Setup `package.json`
+10. Set up `package.json`
 
         {
           "name": "student-manager-demo",
@@ -225,8 +225,12 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 
         composer install && npm install
 
-## Git setup
+## Git Setup
 
 0. Create new repository on Github
 1. `git init`
-2.
+2. `git add *`
+3. `git commit -m ""Setting up configuration files`
+4. `git push -u origin master`
+5. `git tag -a step1 -m Setup`
+6. `git push origin step1`
