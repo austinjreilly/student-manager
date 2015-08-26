@@ -506,9 +506,10 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
         var StudentManagerControllers = angular.module('StudentManagerControllers',[]);
         var StudentManagerServices = angular.module('StudentManagerServices',[]);
 
-### View List of all students with Angular
+### View List of All Students with Angular
 
 0. Create factory using `$http` service in `app/services.js`
+
         StudentManagerServices.factory('slimAPI', function($http){
             return {
                     list: function(callback){
@@ -519,16 +520,19 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
                     },
                 };
         });
+
 1. Create controller in `app/controllers.js`
+
         StudentManagerControllers.controller('StudentListController',function($scope,slimAPI){
             slimAPI.list(function(result){
                 $scope.students = result;
             });
         });
+
 2. Create state in `app/app.js`
 3. Create partial in `app/partials/students.html`
 4. Create view in `index.php` by adding `<div ui-view></div>` element/directive.=
-5. Repeat for viewing single student, editing exiting student, deleting existing students, and adding a new student
+5. Repeat for viewing single student, editing existing student, deleting existing students, and adding a new student
 
 ## CSS
 
@@ -550,5 +554,11 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 2. Create test
 3. Run test using `npm test`
 
+## Additional Features
 
+* Unit testing for API
+* API Improvements
+* Class average test scores
+* Charts and graphs
+* Integration with Khan Academy API
 
