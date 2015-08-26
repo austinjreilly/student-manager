@@ -435,12 +435,11 @@ Student Manager Application built using the Slim PHP Microframework, MySQL, and 
 
 #### REST API Summary
 
-## REST API Summary
+| URL                                                       | HTTP Verb | POST Body   | Result                       |
+|-----------------------------------------------------------|-----------|-------------|------------------------------|
+| http://localhost/student-manager-example/api/students     | GET       | empty       | Returns all students         |
+| http://localhost/student-manager-example/api/students     | POST      | JSON String | Creates new student          |
+| http://localhost/student-manager-example/api/students/:id | GET       | empty       | Returns single student       |
+| http://localhost/student-manager-example/api/students/:id | PUT       | JSON String | Updates and existing student |
+| http://localhost/student-manager-example/api/students/:id | DELETE    | empty       | Deletes existing student     |
 
-| URL                                              | HTTP Verb | POST Body   | Result                       |
-|--------------------------------------------------|-----------|-------------|------------------------------|
-| http://localhost/student-manager-example/api/students    | GET       | empty       | Returns all students         |
-| http://localhost/student-manager-example/api/students    | POST      | JSON String | Creates new student          |
-| http://localhost/student-manager-example/api/students/:id | GET      | empty       | Returns single student       |
-| http://localhost/student-manager-example/api/students/:id | PUT      | JSON String | Updates and existing student |
-| http://localhost/student-manager-example/api/students/:id | DELETE   | empty       | Deletes existing student
