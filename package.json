@@ -10,6 +10,12 @@
   },
   "private": true,
   "devDependencies": {
+    "angular": "~1.4.4",
+    "angular-resource": "~1.4.4",
+    "angular-ui-router": "~0.2.15",
+    "foundation-sites": "~5.5.2",
+    "iconfonts": "*",
+    "angular-mocks": "~1.4.4",
     "gulp": "^3.9.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.4",
@@ -22,7 +28,6 @@
     "phantomjs": "^1.9.18"
   },
   "scripts": {
-    "postinstall": "bower install",
     "test": "karma start karma.conf.js"
   }
 }
